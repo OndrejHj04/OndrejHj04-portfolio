@@ -12,7 +12,7 @@ export default function Page({ item, increase, decrease }) {
       </div>
       <img src={require(`./img/${item.name}.png`)} alt="" />
 
-      <p className="mt-3">{item.description}</p>
+      <p className="mt-3 text-center">{item.description}</p>
       {!!item.homepage.length && (
           <a rel="noreferrer" target="_blank" className="text-center text-blue-700 m-auto" href={item.homepage}>
             Visit me
