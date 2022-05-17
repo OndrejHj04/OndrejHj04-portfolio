@@ -9,7 +9,15 @@ export default function App() {
   useEffect(() => {
     fetch("https://api.github.com/users/OndrejHj04/repos")
       .then((res) => res.json())
-      .then((data) => setRepos(data));
+      .then((data) => {
+        let arr = []
+        data.forEach(item=>{
+          if(item.stargazers_count)
+          arr.push(item)
+        })
+        console.log(arr)
+        setRepos(arr)
+      });
   }, []);
 
   const increase = () => {
@@ -37,7 +45,7 @@ export default function App() {
 
   return (
     <div className="flex max-w-3xl m-auto" style={{ height: height, minHeight: "450px" }}>
-      <div className="m-3 shadow-2xl rounded flex-col w-full border-2 border-slate-100 p-3 flex" style={{ borderRadius: "30px" }}>
+      <div className="m-3 shadow-2xl h-fit rounded flex-col w-full border-2 border-slate-100 p-3 flex" style={{ borderRadius: "30px" }}>
         {repos && getRepos()[counter]}
         <h1 className="text-center">Designed with love 💘 <br />by <a href="https://github.com/OndrejHj04" target="_blank" rel="noreferrer" className="text-sky-500 font-semibold">Ondřej Hájek</a></h1>
       </div>
